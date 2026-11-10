@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "name": "GoW native regression gamepad",
+  "bus": 3,
+  "vendor": 4617,
+  "product": 4,
+  "version": 1,
+  "buttons": [304, 305, 307, 308, 310, 311, 314, 315, 316, 317, 318],
+  "axes": [0, 1, 3, 4],
+  "hat": [16, 17],
+  "guide_code": 316,
+  "start_code": 315,
+  "expected_sdl_counts": [11, 4, 1]
+}

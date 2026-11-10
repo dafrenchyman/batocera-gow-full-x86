@@ -1,0 +1,114 @@
+[build-system]
+requires = ["hatchling==1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "batocera-gow"
+version = "0.1.0"
+description = "Complete stock Batocera packaging and additive Wolf integration"
+requires-python = ">=3.12,<3.13"
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/dafrenchyman/batocera-gow-full-x86"
+Issues = "https://github.com/dafrenchyman/batocera-gow-full-x86/issues"
+
+[project.scripts]
+batocera-gow-build = "batocera_gow.host.build:main"
+batocera-gow-publish = "batocera_gow.host.publish:main"
+batocera-gow-remote = "batocera_gow.host.remote:main"
+batocera-gow-native = "batocera_gow.host.native_integration:main"
+batocera-gow-media = "batocera_gow.host.media:main"
+batocera-gow-qualify = "batocera_gow.host.qualify:main"
+
+[dependency-groups]
+host = ["tomlkit==0.13.3", "python-dotenv==1.2.1"]
+builder-test = ["pytest==9.1.1", "coverage==7.17.0"]
+dev = [
+  "basedpyright==1.40.2",
+  "coverage==7.17.0",
+  "detect-secrets[gibberish]==1.5.0",
+  "mypy==2.4.0",
+  "pre-commit==4.5.1",
+  "pillow==11.0.0",
+  "pytest==9.1.1",
+  "pytest-cov==7.1.0",
+  "ruff==0.17.0",
+  "types-Pillow==10.2.0.20240822",
+]
+
+[tool.uv]
+default-groups = ["host", "dev"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/batocera_gow"]
+
+[tool.pytest.ini_options]
+minversion = "8.4"
+testpaths = ["tests/unit", "tests/integration/local"]
+addopts = [
+  "--strict-config",
+  "--strict-markers",
+  "--import-mode=importlib",
+  "--cov",
+  "--cov-branch",
+  "--cov-report=json:coverage.json",
+  "--cov-report=term:skip-covered",
+]
+markers = [
+  "builder: requires disposable builder and Docker image fixtures",
+  "runtime: requires packaged stock runtime or mount-capable container",
+  "wolf: requires deliberate authorized live Wolf execution",
+]
+filterwarnings = ["error"]
+
+[tool.ruff]
+target-version = "py312"
+preview = false
+unsafe-fixes = false
+
+[tool.ruff.lint]
+select = ["ALL"]
+# Formatter/docstring conventions conflict; no copyright ownership policy exists,
+# so do not fabricate legal attribution merely to satisfy CPY001.
+ignore = ["COM812", "CPY001", "D203", "D213", "ISC001"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+# Tests assert independent expected kernel/event/metadata values, not production
+# constants; keeping those literals prevents self-confirming expectations.
+"tests/**" = ["PLR2004", "S101"]
+# Stable external launchers are deliberately not another importable package.
+"build-assets/runtime/*.py" = ["INP001"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src", "tests", "build-assets", "scripts", "conftest.py"]
+python_executable = ".venv/bin/python"
+
+[tool.basedpyright]
+include = ["src", "tests", "build-assets", "scripts", "conftest.py"]
+pythonVersion = "3.12"
+pythonPlatform = "Linux"
+venvPath = "."
+venv = ".venv"
+typeCheckingMode = "recommended"
+failOnWarnings = false
+
+[tool.coverage.run]
+branch = true
+source = ["src/batocera_gow"]
+patch = ["subprocess"]
+relative_files = true
+
+[tool.coverage.report]
+show_missing = true
+# Keep every executable application line, including unexecuted protocols and
+# defensive branches; Coverage.py defaults must not silently shrink the gate.
+exclude_lines = []
+
+[tool.batocera-gow.coverage]
+minimum = 80

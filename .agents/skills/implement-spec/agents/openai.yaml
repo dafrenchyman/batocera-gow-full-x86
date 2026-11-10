@@ -1,0 +1,5 @@
+interface:
+  display_name: "Implement Spec"
+  short_description: "Coordinate eligible tickets and verify whole-spec delivery"
+policy:
+  allow_implicit_invocation: true

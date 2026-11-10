@@ -1,0 +1,5 @@
+interface:
+  display_name: "Documentation Baseline"
+  short_description: "Establish repo-specific standards and qualifying ADRs"
+policy:
+  allow_implicit_invocation: true

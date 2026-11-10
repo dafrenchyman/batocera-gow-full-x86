@@ -1,0 +1,5 @@
+interface:
+  display_name: "To Spec"
+  short_description: "Synthesize saved exploration into a reviewed Draft"
+policy:
+  allow_implicit_invocation: true

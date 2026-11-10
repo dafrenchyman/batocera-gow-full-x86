@@ -1,0 +1,7 @@
+{
+  "release": "43.1",
+  "upstream_revision": "155c2d8d304cbb53db52e9479dcf683392821d5c",
+  "image_url": "https://sour-silent-prune.6fcff5d8.katapult.cloud/images/batocera-x86_64-43.1-20260529.img.gz",
+  "checksum_url": "https://mirrors.o2switch.fr/batocera/x86_64/stable/last/batocera-x86_64-43.1-20260529.img.gz.md5",
+  "compressed_md5": "0c365dc3c17b05a4b276c579168b01da"
+}

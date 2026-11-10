@@ -1,0 +1,12 @@
+**
+!src/
+!src/**
+!build-assets/
+!build-assets/**
+!pyproject.toml
+!uv.lock
+!.python-version
+!.dockerignore
+!LICENSE
+**/__pycache__/
+**/*.pyc

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Grill with Docs"
+  short_description: "Explore decisions and save each answered choice"
+policy:
+  allow_implicit_invocation: true

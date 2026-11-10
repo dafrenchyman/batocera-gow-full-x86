@@ -1,0 +1,264 @@
+{
+  "schema": 1,
+  "stock_catalog_sha256": "401638d6cbc26e574456f36a4b59007b823b576b35422f519640be9bfd3efc23",
+  "assertion_contract": [
+    "stock_launch_display",
+    "live_before_chord",
+    "native_guide_start",
+    "same_emulator_exited",
+    "launcher_completed",
+    "native_device_consumed_for_libretro",
+    "stock_integrity",
+    "evidence_retained",
+    "cleanup_complete"
+  ],
+  "private_media_policy": "Operator-authorized use only; identity retained privately; no media or firmware distributed; no public-source requirement for private titles",
+  "research_catalog": "../../../../../docs/active/epics/repository-maturation/research/artifacts/fixture-candidate-catalog.json",
+  "cases": [
+    {
+      "id": "nes-fceumm",
+      "system": "nes",
+      "backend": "libretro",
+      "core": "fceumm",
+      "variant": "Packaged RetroArch/FCEUmm version must be observed",
+      "required": true,
+      "route": "Maintained native_integration.py --tier nes-smoke via existing mounted stock system folder and unchanged emulatorlauncher/configgen; optional 240p-test-mini v0.23 research lead",
+      "formats": [".nes", ".unif", ".unf", ".zip", ".7z"],
+      "rights": "Private authorized use is allowed. No public fixture is distributed or cleared by this record. Mini lead has GPL-2.0-or-later obligations and asset provenance to retain.",
+      "firmware": "Ordinary NES cartridge route has no external BIOS requirement; selected variants still need qualification",
+      "research": "240p-test-mini v0.23, https://github.com/pinobatch/240p-test-mini/releases/tag/v0.23",
+      "gaps": [
+        "Original private mounted selection retained from failed run 887fced6a06c46beb4bfac7eff5e9a9c and reproduced by passing v3 run d0f90ed2198440ec8c8978c5c77e4d28; future authorized reproduction must use that same private record without reroll",
+        "First two packaged attempts failed at pre-launch SDL discovery; instrumented fefabd72d5f84eaebf861532b8ce44ed observed exact node access, missing app-local metadata and zero enumeration",
+        "Changed-image 9790d6cf41da411da10946e1fba18c62 observed actual stock classification, mapped SDL/libudev inventory identity, effective libudev discovery and actual suite-pad/profile/open/control qualification, then failed at RetroArch version parsing in 14.74 seconds; forced owned teardown and independent cleanup passed, not exit qualification",
+        "Stock-verified image cb202d96f3e4d4da3e1325cc2c865459e94a5a2d25a84a4c8f2f182bd26b25cf from source57b623238d49a438b08459d0dddb3c8c81b72ffedc8a45954065d9b9516aa08f was loaded; original-selection run ac17be8db1e742d3a284f4fa41822639 retained actual nonblank emulator-before-exit pixels but failed on a scenario remote operation and lost final evidence; owned cleanup passed; cause, native consumption, chord/exit and frontend return remain unproved",
+        "Bounded exclusive incomplete chord/launcher/frontend/cleanup records and missing-final owned runtime observations passed the pre-X11-repair 480-test host suite and generated-file hooks; no qualification identity",
+        "Changed-image e5cd2fd1bc4d8d2acaa52a7707caa6b225bdc6f64515ccc3a13708b66ccbd0bc from source2c5b59e1688c665371a2cd4573a53f9a08621442f69bbb5952cc703fcedc03ba failed original-selection run 3abd88f727ed40a89cab4952683b2ba7 after retained nonblank output and incomplete before-chord/pressed/released records; native consumption observed passed, emulator live at press then absent at release, launcher pending; no classified natural exit/final JSON/ready return; independent cleanup passed",
+        "Coordinator reproduced fatal BadWindow on a destroyed active-window property with real authenticated Xvfb, then observed the repaired smoke survive; all seven real-X11 regressions execute within the pre-classification-tranche 487-passed/two-prerequisite-skip host suite and every generated file passed hooks; native cause remains inconclusive",
+        "Stock-verified X11-repair image e7181d8545fad0e0459ad9f858ee9479a311d5eff1e3d7aa952bba4d1263163b from source4061bc3e0c42d66065b46c4e0eae7d0259adf835f4d96488ddcf602d3c432a9f failed original-selection run fde40f7e5c0340e1a5bda3683c757b1d in 16.91 seconds; native consumption passed, nonblank output and both native chord phases retained, pinned emulator died and launcher returned zero, but termination remained unavailable; final JSON, sanitized selected log and incomplete launcher/cleanup snapshots survived; frontend withheld and independent cleanup passed without forced emulator teardown",
+        "Earlier fde40f7e5c0340e1a5bda3683c757b1d output reached EOF without overflow/read failure/cancellation: 68487 bytes, SHA-256 86142e3a2b6dd5b13c5d702380a576badf5fe86352d4905c8698678105b0964f; memory-only raw bytes cleared at cleanup, so that run's rejection predicate cannot be recovered",
+        "Stock-verified image 9dbce3be5f85d09e31e5837b04c92d27238c0381d9a28bfce8a2a925cb345d42 from source58a71a4038284ae20d842710824ac891e7931a8372b5533804ec548dde6665e8 passed full saved-image build706.10s and exact target load196.16s; original-selection b6963932800442fca1d4a7841dce622f failed16.70s with proven logging-error rejection, native consumption and both chord phases passed, pinned emulator dead and launcher zero; frontend withheld, final/sanitized/boundary evidence retained, actual failure PNG visually black and both cleanup gates passed without forced emulator teardown",
+        "Earlier b6963932800442fca1d4a7841dce622f complete private stream: EOF true, 68487 bytes, SHA-256 9b6288944c7bc25bb334d6015d8bcff9f63b6549dfea7955d0ed9ddddbdfb9e3, no overflow/read failure/cancellation; raw bytes gone, that run did not attribute the underlying logging exception or natural-exit mechanism",
+        "Historical logging-attribution diagnostics retain only fixed builtin exception/known-condition categories, numeric errno and at most eight exact pinned public role/line pairs within 8 KiB/128 lines; they do not establish cause of death",
+        "Original-selection run d0f90ed2198440ec8c8978c5c77e4d28 passed stock-native-observed-exit-v3 on stock-verified image 9d4980b16df126a71a1d2522f194528c3daaafc00e44d754216671dfaadb9368 from source b63501d5a6fa6870d1b7be94e597ac25bb9d3788a65b39d0f347f0fe6260b7b5; native launch/output, consumption, chord, same-emulator exit, launcher zero, evidence and both cleanup gates passed without forced teardown",
+        "Logging-error and unavailable natural-exit classification remain diagnostic; graceful shutdown, save persistence, gameplay, other shortcuts and frontend recovery are not qualified; earlier failed reports retain their original results and assertions",
+        "Independent same-image frontend/five-receiver run 1979a36a973144f180f5fe720b57a94d passed required evidence and owned cleanup; neither run supplies another backend or the full six-case regression",
+        "Reusable media-agnostic declaration remains unqualified; selected-run qualification belongs in owner-only output/integration/d0f90ed2198440ec8c8978c5c77e4d28/nes-fceumm-qualification.json, tied to actual media, backend/profile, image/source and stock-native-observed-exit-v3 identities; other inputs require their own qualification"
+      ],
+      "qualification": { "status": "unqualified", "identity": null }
+    },
+    {
+      "id": "snes-snes9x",
+      "system": "snes",
+      "backend": "libretro",
+      "core": "snes9x",
+      "variant": "Packaged RetroArch/Snes9x version must be observed",
+      "required": true,
+      "route": "Implemented native_integration.py --tier snes-smoke selects snes-snes9x through the existing mounted stock system folder and unchanged emulatorlauncher/configgen; PVSnesLib input/controller remains an optional source lead",
+      "formats": [
+        ".smc",
+        ".fig",
+        ".sfc",
+        ".gd3",
+        ".gd7",
+        ".dx2",
+        ".bsx",
+        ".swc",
+        ".zip",
+        ".7z"
+      ],
+      "rights": "Private authorized use is allowed. Public lead needs source, font, linked SDK and toolchain review; no distributed fixture clearance.",
+      "firmware": "Ordinary SNES cartridge route has no external BIOS requirement; special-chip/add-on routes need separate qualification",
+      "research": "Retained classic-input-fixtures.md PVSnesLib controller lead; older gilyon CPU fixture is not input evidence",
+      "gaps": [
+        "Selected-run stock-native-observed-exit-v3 passed in 57bb80bdf7ac42e59c06c790462f0e0c on historical image128ebf12/sourcebaab3bf6; report and private qualification remain in output/integration",
+        "This reusable template has no selected media identity; a different image or input requires its own retained exact-input qualification",
+        "Optional source build and font/SDK obligations unresolved",
+        "Historical launch/display, native consumption and Guide+Start passed for that selection only; this template does not qualify arbitrary SNES inputs"
+      ],
+      "qualification": { "status": "unqualified", "identity": null }
+    },
+    {
+      "id": "megadrive-genesisplusgx",
+      "system": "megadrive",
+      "backend": "libretro",
+      "core": "genesisplusgx",
+      "variant": "Packaged RetroArch/Genesis Plus GX, not expanded or wide variants",
+      "required": true,
+      "route": "Implemented native_integration.py --tier megadrive-smoke selects megadrive-genesisplusgx through the existing mounted stock system folder and unchanged emulatorlauncher/configgen; optional unchanged SGDK v2.11 joy-test lead",
+      "formats": [".bin", ".gen", ".md", ".sg", ".smd", ".zip", ".7z"],
+      "rights": "Private authorized use is allowed. SGDK MIT lead still requires binary/source, font/resource and linked/toolchain review before distribution.",
+      "firmware": "Ordinary Mega Drive cartridge route needs no Sega CD BIOS; add-on routes are not covered",
+      "research": "https://github.com/Stephane-D/SGDK/tree/v2.11/sample/joy-test",
+      "gaps": [
+        "Historical run f7f492e796bc4f99b07f96dc29e4be03 on image128ebf12/sourcebaab3bf6 genuinely skipped for no compatible mounted media; not a passing exit",
+        "No selected media identity; every new full run must rediscover actual absence or qualify its eligible input",
+        "Public lead binary/source and resource provenance not cleared",
+        "Native launch/display, consumption and Guide+Start transition unrun"
+      ],
+      "qualification": { "status": "unqualified", "identity": null }
+    },
+    {
+      "id": "atari2600-stella",
+      "system": "atari2600",
+      "backend": "libretro",
+      "core": "stella",
+      "variant": "Packaged RetroArch/Stella version must be observed",
+      "required": true,
+      "route": "Implemented native_integration.py --tier atari2600-smoke selects atari2600-stella through the existing mounted stock system folder and unchanged emulatorlauncher/configgen; optional unchanged 8bitworkshop controls.a or a26-kickstart leads",
+      "formats": [".a26", ".bin", ".zip", ".7z"],
+      "rights": "Private authorized use is allowed. controls.a CC0 source has unresolved include/build rights; MIT color-bar source is not a qualified artifact. Nothing distributed.",
+      "firmware": "Ordinary Atari 2600 cartridge route has no external BIOS requirement",
+      "research": "Retained classic-input-fixtures.md and https://github.com/owlcreekworkshop/a26-kickstart",
+      "gaps": [
+        "Selected-run stock-native-observed-exit-v3 passed in 38c60d5067be4352b2cc6a91a4be4b9f on historical image128ebf12/sourcebaab3bf6; report and private qualification remain in output/integration",
+        "This reusable template has no selected media identity; a different image or input requires its own retained exact-input qualification",
+        "Optional build/include rights remain open",
+        "Historical launch/display, native consumption and Guide+Start passed for that selection only; this template does not qualify arbitrary Atari inputs"
+      ],
+      "qualification": { "status": "unqualified", "identity": null }
+    },
+    {
+      "id": "psx-duckstation",
+      "system": "psx",
+      "backend": "duckstation",
+      "core": "duckstation",
+      "variant": "duckstation-qt/OpenGL",
+      "required": true,
+      "route": "native_integration.py --tier psx-smoke selects psx-duckstation/OpenGL through stock emulatorlauncher/configgen and the startup-installed partial PSX wrapper; preserve CUE tracks/playlists; independently qualify active backend and automatic visual selection",
+      "formats": [
+        ".cue",
+        ".img",
+        ".mdf",
+        ".pbp",
+        ".toc",
+        ".cbn",
+        ".m3u",
+        ".ccd",
+        ".chd",
+        ".iso"
+      ],
+      "rights": "Private authorized use is allowed. Authored-assets statement is research evidence, not complete built-disc distribution clearance. No BIOS or disc bytes distributed.",
+      "firmware": "Operator-supplied supported PS1 BIOS through existing read-only BIOS mount; alternative firmware needs actual packaged-backend qualification",
+      "research": "Retained standalone-input-fixtures.md; https://github.com/spicyjpeg/ps1-bare-metal",
+      "gaps": [
+        "Ordinary maintained OpenGL run 8e6ca8810b3c45ac827b89c0a044e79f passed rendered output, actual OpenGL, native Guide+Start, launcher zero, retained evidence and owned cleanup on image109c14e2/source175676dc; private qualification is beside its report",
+        "Installed metadata observation on immutable 9d4980b1 exited1 with DuckStation Version  (); empty runtime tag/branch and unavailable compiled commit identity are not replaced by package-source v0.1-7294 at old-releases commit 3a08ad18406efc1ddc4927a59bea715961bb63fa",
+        "No private disc or BIOS identity belongs in this media-agnostic template; expanded execution requires the exact retained selected-run proof",
+        "Optional source/media build route unqualified",
+        "Supported disposable PSX fixture seeds psx.bezel=none; MangoHUD-enabled bezels, gameplay and other inputs remain unqualified"
+      ],
+      "qualification": { "status": "unqualified", "identity": null }
+    },
+    {
+      "id": "psx-duckstation-vulkan",
+      "system": "psx",
+      "backend": "duckstation",
+      "core": "duckstation",
+      "variant": "duckstation-qt/Vulkan",
+      "required": true,
+      "route": "native_integration.py --tier psx-vulkan-smoke selects Vulkan through the same installed PSX command and unchanged stock launcher/configgen; no OpenGL discovery or Qt visual argument; use the same immutable image and selected media as OpenGL in separate disposable state",
+      "formats": [
+        ".cue",
+        ".img",
+        ".mdf",
+        ".pbp",
+        ".toc",
+        ".cbn",
+        ".m3u",
+        ".ccd",
+        ".chd",
+        ".iso"
+      ],
+      "rights": "Private authorized use only; no disc or firmware bytes distributed",
+      "firmware": "Operator-supported PS1 BIOS through the existing read-only mount",
+      "research": "DuckStation source 3a08ad18406efc1ddc4927a59bea715961bb63fa and retained duckstation-startup-failure.md",
+      "gaps": [
+        "Ordinary maintained Vulkan run 0476b65d193b4b4e906f3d5f2e209939 passed actual Vulkan, rendered output, native Guide+Start, launcher zero, retained evidence and owned cleanup on image109c14e2/source175676dc",
+        "Independent state and the same supported selected disc as OpenGL; private qualification is beside its report; public template remains unqualified and MangoHUD-enabled bezels remain outside this fixture"
+      ],
+      "qualification": { "status": "unqualified", "identity": null }
+    },
+    {
+      "id": "xbox-xemu",
+      "system": "xbox",
+      "backend": "xemu",
+      "core": "xemu",
+      "variant": "Standalone /usr/bin/xemu; actual authenticated disposable-config metadata 0.8.134 at fc9980d2962cbec656253106ea2e121fab1e68d4 observed in selected-run qualification",
+      "required": true,
+      "route": "Stock xbox directory .iso/.squashfs through --tier xbox-smoke and unchanged emulatorlauncher/configgen; selected disc comes from generated sys.files.dvd_path, not emulator argv; actual ISO sector32 dual-signature XDVDFS descriptor and in-image root extent required after stock squashfs backing/read-only attribution; invalid selected media fails execution, not discovery or no-media skipping; raw XBE and shifted full redump images unsupported",
+      "formats": [".iso", ".squashfs"],
+      "rights": "Private authorized use is allowed. nxdk sample-specific grant, default CxBE logo, runtime and font rights remain unresolved for distribution. No selected sample distributed.",
+      "firmware": "Read-only operator mcpx_1.0.bin and compatible unsigned-capable Complex_4627.bin; unchanged-stock-private-disposable-use HDD route only, copied from stock seed SHA256 eb35d069715dfc0d37cfac086a0b73a89a02e8f12519cd8eda82ad479d1a4eed into owned userdata; no production HDD/EEPROM/config copies",
+      "research": "Retained standalone-input-fixtures.md actual-stock HDD follow-up; https://xemu.app/docs/required-files/ and https://xemu.app/docs/disc-images/; pinned Batocera43.1 xemu generator/config/paths and v0.8.134 recipe; XDVDFS volume/region layout at https://github.com/antangelo/xdvdfs/tree/6b05af7fba79d567ef8c9698c8702b8d782248b8/xdvdfs-core/src/layout and volume reader; raw unshifted ATAPI addressing at https://github.com/xemu-project/xemu/blob/fc9980d2962cbec656253106ea2e121fab1e68d4/hw/ide/atapi.c#L92-L111",
+      "gaps": [
+        "Selected-run stock-native-observed-exit-v3 passed in 7094e0cca52148729e12d458d40bb016 on historical image128ebf12/sourcebaab3bf6; private exact-input qualification is beside its report",
+        "Installed executable SHA256 bfc5c55c5c88e822599eb84a67497831e39f30a6c3621a3a7fa8714b469e6992 and successful authenticated disposable-config -version are recorded in that native report, not inferred from package metadata",
+        "Stock seed is 4521984 bytes, preformatted 8GiB QCOW2 with legacy dummy dashboard. First-party intended-origin/copyright-free-use evidence supports unchanged stock private disposable use; complete release-byte correspondence and embedded redistribution terms remain unproved. No new public HDD fixture or redistribution claim",
+        "Actual SDL3 mapping, suite-pad access, effective stock TOML/environment/port and independently observed SDL3 GUID passed for that selection; SDL2 discovery alone remains insufficient",
+        "No selected XISO or firmware/data identity belongs in this public template; current image/source/input changes require their own private proof",
+        "Bounded descriptor/root-extent evidence is bound to selected media identity in the final pre-chord disc_format snapshot; structure only, not filesystem-tree/executable validation, guest bootability, selected-title rendering or gameplay proof",
+        "Optional nxdk sample distribution rights unresolved",
+        "Historical startup/display and observed Guide+Start exit passed for that selected input only; gameplay, saves, frontend recovery and arbitrary Xbox media remain unqualified"
+      ],
+      "qualification": { "status": "unqualified", "identity": null }
+    },
+    {
+      "id": "ps3-rpcs3",
+      "system": "ps3",
+      "backend": "rpcs3",
+      "core": "rpcs3",
+      "variant": "Packaged standalone RPCS3 version must be observed",
+      "required": false,
+      "route": "Named nonblocking expanded target; existing stock .ps3/.psn/ISO/squashfs route only; PSL1GHT videoTest is a source-only lead",
+      "formats": [".ps3", ".psn", ".iso", ".squashfs"],
+      "rights": "Private authorized use is allowed. PSL1GHT mixed MIT/GPL helpers and linked toolchain/port-library terms need review. No firmware redistribution grant follows.",
+      "firmware": "Operator PS3 system software, with installed derivatives confined to disposable userdata",
+      "research": "https://github.com/ps3dev/PSL1GHT/tree/f649a08fd536a9e27c08c7db2d93a2d7ee4c3bbe/samples/graphics/videoTest",
+      "gaps": [
+        "No qualified launchable fixture",
+        "Source build, stock packaging, rights and firmware profile unresolved",
+        "Guest Start self-exit does not prove native Guide+Start; all native assertions unrun"
+      ],
+      "qualification": { "status": "unqualified", "identity": null }
+    },
+    {
+      "id": "xbox360-xenia",
+      "system": "xbox360",
+      "backend": "xenia",
+      "core": "xenia",
+      "variant": "Packaged xenia version and Wine/native route must be observed",
+      "required": false,
+      "route": "Named nonblocking expanded target; existing stock supported media only",
+      "formats": [".iso", ".xex", ".xbox360", ".zar"],
+      "rights": "Private authorized use is allowed. No public visual/input fixture is qualified or distributed.",
+      "firmware": "No Xbox 360 system-files requirement inferred; actual content, backend and hardware prerequisites still need qualification",
+      "research": "https://github.com/xenia-project/hwtests and retained xsdk negative finding",
+      "gaps": [
+        "hwtests is CPU/log-oriented with build/format gaps",
+        "Inspected xsdk presentation unsupported, not a visual pass",
+        "Native launch/display and Guide+Start transition unrun"
+      ],
+      "qualification": { "status": "unqualified", "identity": null }
+    },
+    {
+      "id": "xbox360-xenia-canary",
+      "system": "xbox360",
+      "backend": "xenia-canary",
+      "core": "xenia-canary",
+      "variant": "Packaged xenia-canary version and Wine/native route must be observed separately",
+      "required": false,
+      "route": "Named nonblocking expanded variant; existing stock supported media only; xenia results do not qualify canary",
+      "formats": [".iso", ".xex", ".xbox360", ".zar"],
+      "rights": "Private authorized use is allowed. No public visual/input fixture is qualified or distributed.",
+      "firmware": "No Xbox 360 system-files requirement inferred; actual content, backend and hardware prerequisites still need qualification",
+      "research": "https://github.com/xenia-project/hwtests and retained xsdk negative finding",
+      "gaps": [
+        "No separately qualified canary fixture",
+        "CPU/log and unsupported-presentation leads are not visual proof",
+        "Native launch/display and Guide+Start transition unrun"
+      ],
+      "qualification": { "status": "unqualified", "identity": null }
+    }
+  ]
+}

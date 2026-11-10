@@ -1,0 +1,17 @@
+/output/
+/cache/
+/.venv/
+__pycache__/
+*.pyc
+/result
+/result-*
+/.env
+/handoff.md
+/.coverage
+/.coverage.*
+/coverage.json
+/coverage-run.json
+/.idea
+/.mypy_cache
+/.pytest_cache
+/.ruff_cache

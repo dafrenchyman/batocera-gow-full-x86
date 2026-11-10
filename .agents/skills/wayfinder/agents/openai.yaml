@@ -1,0 +1,5 @@
+interface:
+  display_name: "Wayfinder"
+  short_description: "Explore epics and coordinate linked spec planning"
+policy:
+  allow_implicit_invocation: true

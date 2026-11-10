@@ -1,0 +1,3 @@
+#!/bin/sh
+# The stock generator's bare name reaches this only after config generation.
+exec /usr/bin/python3 /opt/gow-full-x86/duckstation_wrapper.py "$@"

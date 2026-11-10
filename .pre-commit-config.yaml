@@ -1,0 +1,66 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: 44b5042edab9382aba712eed4f9c7bab7a3d6a3e # pragma: allowlist secret -- v0.17.0
+    hooks:
+      - id: ruff-check
+        args: [--fix]
+        types_or: [python, pyi]
+        language_version: python3.12
+      - id: ruff-format
+        types_or: [python, pyi]
+        language_version: python3.12
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: 2834ec6639549dd6796205c8f011dedcd587288b # pragma: allowlist secret -- v2.4.0
+    hooks:
+      - id: mypy
+        # Check the complete configured source with the locked project dependencies.
+        entry: uv run --frozen --no-sync mypy
+        # Do not inherit the mirror's blanket --ignore-missing-imports default.
+        args: []
+        language: system
+        pass_filenames: false
+        always_run: true
+  - repo: https://github.com/rbubley/mirrors-prettier
+    rev: 331f33fa4dfbcbca7c3da3620c137fde0faab273 # pragma: allowlist secret -- v3.9.10, plugin-free
+    hooks:
+      - id: prettier
+        language_version: system
+        types: [file]
+        files: '\.(js|jsx|mjs|cjs|ts|tsx|mts|cts|json|css|scss|md|mdx|yaml|yml|html)$'
+  - repo: https://github.com/kamadorueda/alejandra
+    rev: 3e2a85506627062313e131bf8a85315f3387c8e0 # pragma: allowlist secret -- 4.0.0
+    hooks:
+      - id: alejandra-system
+  - repo: local
+    # Reuse synchronized project tools and existing Nix system binaries.
+    hooks:
+      - id: basedpyright
+        name: basedpyright
+        entry: uv run --frozen --no-sync basedpyright
+        language: system
+        pass_filenames: false
+        always_run: true
+      - id: statix
+        name: statix check
+        language: system
+        entry: bash
+        args:
+          - -c
+          - 'status=0; for file in "$@"; do statix check "$file" || status=1; done; exit "$status"'
+          - --
+        types: [nix]
+        require_serial: true
+      - id: deadnix
+        name: deadnix check
+        language: system
+        entry: deadnix
+        args: [--fail]
+        types: [nix]
+        require_serial: true
+  - repo: https://github.com/Yelp/detect-secrets
+    # Ordinary stable-release tag, aligned with the locked dev executable.
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
+        language: system
+        args: [--baseline, .secrets.baseline]
