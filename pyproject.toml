@@ -91,6 +91,7 @@ python_executable = ".venv/bin/python"
 
 [tool.basedpyright]
 include = ["src", "tests", "build-assets", "scripts", "conftest.py"]
+extraPaths = ["src"]
 pythonVersion = "3.12"
 pythonPlatform = "Linux"
 venvPath = "."

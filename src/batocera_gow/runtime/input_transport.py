@@ -14,7 +14,7 @@ import stat
 import subprocess
 import sys
 import time
-from collections.abc import Callable
+from collections.abc import Callable, Collection
 from contextlib import ExitStack, suppress
 from pathlib import Path
 from types import FrameType, TracebackType
@@ -145,8 +145,18 @@ class ProcessTree:
         root = OwnedProcess(child.pid)
         self.records = {root.pid: root}
 
-    def scan(self) -> None:
-        """Admit live descendants, including children that create new sessions."""
+    def scan(self, *, retained: Collection[OwnedProcess] = ()) -> None:
+        """Retire exited pins and admit live descendants, including new sessions.
+
+        Args:
+            retained: Process pins still borrowed by input sources. Keep these
+                open until the caller revokes those sources and stops retaining
+                their pins, even when the creator has exited.
+        """
+        for pid, record in list(self.records.items()):
+            if record not in retained and not live(record.fd):
+                del self.records[pid]
+                record.close()
         candidates: dict[int, tuple[int, int]] = {}
         for entry in Path("/proc").iterdir():
             if entry.name.isdecimal() and int(entry.name) not in self.records:
@@ -812,7 +822,9 @@ class Broker:
             worker_result = worker.poll()
             if worker_result is not None and self.closing_deadline is None:
                 self.worker_closed()
-            tree.scan()
+            tree.scan(
+                retained=tuple(source.process for source in self.sources.values())
+            )
             for name, source in list(self.sources.items()):
                 if not source.valid():
                     self.revoke(name)

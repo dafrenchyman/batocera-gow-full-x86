@@ -1,7 +1,9 @@
 """Exercise installed process admission, inode ownership and pidfile boundaries."""
 
 import contextlib
+import errno
 import os
+import select
 import shutil
 import signal
 import subprocess
@@ -38,6 +40,37 @@ def start_process() -> Iterator[Callable[[list[str]], subprocess.Popen[bytes]]]:
             return child
 
         yield start
+
+
+@pytest.fixture
+def process_family() -> Iterator[subprocess.Popen[bytes]]:
+    """Own a handshake-controlled family without measuring its stdlib fixture."""
+    helper = Path(__file__).with_name("input_process_family.py")
+    # Only this stdlib fixture skips site hooks; the broker remains measured.
+    child = subprocess.Popen(  # noqa: S603 - fixed checked fixture argv.
+        [sys.executable, "-I", "-S", str(helper)],
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+    )
+    try:
+        yield child
+    finally:
+        try:
+            child.communicate(input=b"stop\n", timeout=5)
+        finally:
+            reap_process(child)
+
+
+def family_command(child: subprocess.Popen[bytes], command: str) -> str:
+    """Exchange one bounded command with the owned process-family fixture."""
+    assert child.stdin is not None
+    assert child.stdout is not None
+    child.stdin.write(command.encode() + b"\n")
+    child.stdin.flush()
+    assert select.select([child.stdout], [], [], 5)[0], "process family did not reply"
+    reply = child.stdout.readline()
+    assert reply, "process family exited before replying"
+    return reply.decode().strip()
 
 
 def reap_process(child: subprocess.Popen[bytes]) -> None:
@@ -84,6 +117,44 @@ class TestProcessBoundary:
                     record.send(signal.SIGKILL)
             finally:
                 tree.close()
+
+    def test_turnover_releases_dead_pins_but_preserves_live_and_borrowed_pins(
+        self, process_family: subprocess.Popen[bytes]
+    ) -> None:
+        """Keep descriptor ownership bounded without invalidating source borrowers."""
+        tree = broker.ProcessTree(process_family)
+        try:
+            survivor = int(family_command(process_family, "spawn"))
+            tree.scan()
+            borrowed = tree.records[survivor]
+            for _ in range(40):
+                pid = int(family_command(process_family, "spawn"))
+                tree.scan()
+                descriptor = tree.records[pid].fd
+                family_command(process_family, f"finish {pid}")
+                tree.scan()
+                with pytest.raises(
+                    OSError, match=rf"^\[Errno {errno.EBADF}\]"
+                ) as closed:
+                    os.fstat(descriptor)
+                assert closed.value.errno == errno.EBADF
+                assert borrowed.valid()
+                assert tree.records[process_family.pid].valid()
+
+            family_command(process_family, f"finish {survivor}")
+            tree.scan(retained=(borrowed,))
+            assert not borrowed.valid()
+            with pytest.raises(ProcessLookupError):
+                borrowed.duplicate(0)
+            assert tree.records[survivor] is borrowed
+
+            tree.scan()
+            with pytest.raises(OSError, match=rf"^\[Errno {errno.EBADF}\]") as released:
+                os.fstat(borrowed.fd)
+            assert released.value.errno == errno.EBADF
+            assert set(tree.records) == {process_family.pid}
+        finally:
+            tree.close()
 
     def test_dead_pidfd_cannot_authorize_descriptor_access(
         self,

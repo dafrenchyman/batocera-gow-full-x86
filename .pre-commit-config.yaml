@@ -37,6 +37,7 @@ repos:
       - id: basedpyright
         name: basedpyright
         entry: uv run --frozen --no-sync basedpyright
+        args: [--level, error]
         language: system
         pass_filenames: false
         always_run: true
